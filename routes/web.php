@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StartChatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('start_chat/{recipient_id}', [StartChatController::class, 'showChat'])->name('start_chat');
+Route::post('send_message', [StartChatController::class, 'SendMessage'])->name('send_message');
+Route::get('delete_message/{message_id}/{user_id}/', [StartChatController::class, 'DeleteMessage'])->name('delete_message');
+
